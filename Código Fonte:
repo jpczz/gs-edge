@@ -1,0 +1,24 @@
+const int ledPin = 13; // Pino digital para o LED
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  // Simulação de aumento de temperatura
+  static float temperaturaCelsius = 20.0;
+  temperaturaCelsius += 0.1; // Aumento simulado de temperatura
+
+  Serial.print("Temperatura: ");
+  Serial.print(temperaturaCelsius);
+  Serial.println(" °C");
+
+  if (temperaturaCelsius > 25.0) { // Defina seu limite de temperatura aqui
+    digitalWrite(ledPin, HIGH);   // Aciona o LED se a temperatura simulada ultrapassar o limite
+  } else {
+    digitalWrite(ledPin, LOW);    // Desativa o LED caso contrário
+  }
+
+  delay(500);
+}
